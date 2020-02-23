@@ -42,12 +42,28 @@
   margin: 0;
 }
 
-.navbar ul li a {
+.navlink {
   color: #ffffff;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.navlink-active {
+  color: #f06c64;
+}
+
+.navbar ul li:not(:last-child)::after {
+  content: " ";
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 20%;
+  margin-left: 8px;
+  margin-bottom: 2px;
 }
 
 .navbar ul li a:hover {
@@ -75,14 +91,14 @@ li {
   display: block;
   width: 240px;
   height: 483px;
-  margin: 54px 0 0 112px;
+  margin: 52px 0 0 112px;
 }
 
 .horizontal_phone {
   display: block;
   width: 483px;
   height: 240px;
-  margin: 173px 111px 0 0;
+  margin: 175px 111px 0 0;
 }
 
 .arrow {
@@ -91,19 +107,20 @@ li {
   line-height: 28px;
   color: #000000;
   opacity: 30%;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .arrow:hover {
-  transform: scale(1.5); 
+  transform: scale(1.5);
 }
 
-.prev, .next {
+.prev,
+.next {
   position: absolute;
   top: 282px;
 }
 
-.prev  {
+.prev {
   left: 42px;
 }
 
