@@ -24,16 +24,16 @@
             <a class="navlink navlink-active" href="#">home</a>
           </li>
           <li class="navbar__item">
-            <a class="navlink" href="#">services</a>
+            <a class="navlink" href="#services">services</a>
           </li>
           <li class="navbar__item">
-            <a class="navlink" href="#">portfolio</a>
+            <a class="navlink" href="#portfolio">portfolio</a>
           </li>
           <li class="navbar__item">
-            <a class="navlink" href="#">about</a>
+            <a class="navlink" href="#about">about</a>
           </li>
           <li class="navbar__item">
-            <a class="navlink" href="#">contact</a>
+            <a class="navlink" href="#contacts">contact</a>
           </li>
         </ul>
       </nav>
@@ -45,13 +45,21 @@
       <div class="next arrow">
         <i class="fa fa-chevron-right"></i>
       </div>
-      <div class="slide1">
-        <img class="vertical_phone" src="./assets/images/iphone_vertical.png" alt="phone" />
-        <img class="horizontal_phone" src="./assets/images/iphone_horizontal.png" alt="phone" />
+      <div class="slider-wrapper">
+        <div class="slide slide1">
+          <img class="vertical_phone" src="./assets/images/iphone_vertical.png" alt="phone" />
+          <div class="vertical_phone_button"></div>
+          <img class="horizontal_phone" src="./assets/images/iphone_horizontal.png" alt="phone" />
+          <div class="horizontal_phone_button"></div>
+        </div>
+        <div class="slide slide2">
+          <img class="vertical_phone2" src="./assets/images/Slide-2.png" alt="phone" />
+        </div>
       </div>
     </section>
 
     <section class="services">
+      <a name="services"></a>
       <h2 class="services__title">Our Services</h2>
       <p class="services__text">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.
@@ -61,7 +69,9 @@
       </p>
       <ul class="services-wrapper">
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/pen.png" alt="pen" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/pen.png" alt="pen" />
+          </div>
           <h3 class="features__title">Custom Design</h3>
           <p class="features__text">
             Curabitur vestibulum eget mauris quis laoreet. Phasellus in quam
@@ -69,7 +79,9 @@
           </p>
         </li>
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/bulb.png" alt="bulb" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/bulb.png" alt="bulb" />
+          </div>
           <h3 class="features__title">Inovative Ideas</h3>
           <p class="features__text">
             Quisque luctus, quam eget molestie com&shy;modo, lacus purus
@@ -77,7 +89,9 @@
           </p>
         </li>
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/heart.png" alt="heart" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/heart.png" alt="heart" />
+          </div>
           <h3 class="features__title">Love Is The Answer</h3>
           <p class="features__text">
             Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis,
@@ -85,7 +99,9 @@
           </p>
         </li>
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/phone.png" alt="phone" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/phone.png" alt="phone" />
+          </div>
           <h3 class="features__title">Responsive Layout</h3>
           <p class="features__text">
             Sed porttitor placerat rhoncus. In at nunc tellus. Maecenas
@@ -93,7 +109,9 @@
           </p>
         </li>
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/bubble.png" alt="bubble" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/bubble.png" alt="bubble" />
+          </div>
           <h3 class="features__title">24 / 7 Support</h3>
           <p class="features__text">
             Vivamus vel quam lacinia, tincidunt dui non, vehicula nisi. Nulla
@@ -101,7 +119,9 @@
           </p>
         </li>
         <li class="features">
-          <div class="features__icons"><img src="./assets/images/star.png" alt="star" /></div>
+          <div class="features__icons">
+            <img src="./assets/images/star.png" alt="star" />
+          </div>
           <h3 class="features__title">Feel Like A Star</h3>
           <p class="features__text">
             Quisque hendrerit purus dapibus, ornare nibh vitae, viverra nibh.
@@ -111,6 +131,7 @@
       </ul>
     </section>
     <section class="portfolio">
+      <a name="portfolio"></a>
       <h2 class="portfolio__title">Portfolio</h2>
       <p class="portfolio__text">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
@@ -118,30 +139,59 @@
       </p>
       <ul class="portfolio-filter">
         <li>
-          <a class="portfolio-filter__item portfolio-filter__item--active" href="#">All</a>
+          <a class="portfolio-filter__item portfolio-filter__item--active" data-tag="all">All</a>
         </li>
-        <li><a class="portfolio-filter__item" href="#">Web Design</a></li>
-        <li><a class="portfolio-filter__item" href="#">Graphic Design</a></li>
-        <li><a class="portfolio-filter__item" href="#">Artwork</a></li>
+        <li>
+          <a class="portfolio-filter__item" data-tag="web">Web Design</a>
+        </li>
+        <li>
+          <a class="portfolio-filter__item" data-tag="graphic">Graphic Design</a>
+        </li>
+        <li>
+          <a class="portfolio-filter__item" data-tag="art">Artwork</a>
+        </li>
       </ul>
       <ul class="portfolio-photo">
-        <li class="portfolio-photo__item"><img src="assets/images/ship.png" alt="ship" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/girl.png" alt="girl" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/city.png" alt="city" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/robot.png" alt="robot" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/animal.png" alt="animal" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/gadjet.png" alt="gadjet" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/cosmos.png" alt="cosmos" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/chicken.png" alt="chicken" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/house.png" alt="house" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/font.png" alt="font" /></li>
-        <li class="portfolio-photo__item"><img src="assets/images/alien.png" alt="alien" /></li>
+        <li class="portfolio-photo__item">
+          <img class="active-image" src="assets/images/ship.png" alt="ship" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/girl.png" alt="girl" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/city.png" alt="city" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/robot.png" alt="robot" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/animal.png" alt="animal" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/gadjet.png" alt="gadjet" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/cosmos.png" alt="cosmos" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/chicken.png" alt="chicken" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/house.png" alt="house" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/font.png" alt="font" />
+        </li>
+        <li class="portfolio-photo__item">
+          <img src="assets/images/alien.png" alt="alien" />
+        </li>
         <li class="portfolio-photo__item">
           <img src="assets/images/broken-glass.png" alt="broken glass" />
         </li>
       </ul>
     </section>
     <section class="about-us">
+      <a name="about"></a>
       <h2 class="about-us__title">About Us</h2>
       <p class="about-us__text">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.
@@ -222,6 +272,7 @@
       </ul>
     </section>
     <section class="quote">
+      <a name="contacts"></a>
       <h2 class="quote__title">Get a Quote</h2>
       <p class="quote__text">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.
@@ -230,15 +281,23 @@
         tortor mauris condimentum nibh.
       </p>
       <div class="contacts__wrapper">
-        <form class="contacts__form" action="">
+        <form class="contacts__form">
           <input class="contacts__field" name="text" type="text" placeholder="Name (Required)" required />
           <input class="contacts__field" type="email" name="mail" placeholder="Email (Required)" required />
           <input class="contacts__field" type="text" name="subject" placeholder="Subject" />
           <textarea name="textarea" class="contacts__textarea" cols="30" rows="10"
             placeholder="Describe your project in detail..."></textarea>
 
-          <div class="contacts__bottom"><input class="contacts__submit" type="submit" value="Submit" /></div>
+          <div class="contacts__bottom">
+            <input class="contacts__submit" type="submit" value="Submit" />
+          </div>
         </form>
+        <div id="modal-window" class="modal">
+          <div class="modal-content">
+            <div class="modal-body"></div>
+            <button class="close">OK</button>
+          </div>
+        </div>
         <div class="contacts">
           <h3 class="contacts__caption">Contact Information</h3>
           <p class="contacts__text">
@@ -283,6 +342,7 @@
       </ul>
     </footer>
   </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
