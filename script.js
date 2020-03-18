@@ -1,10 +1,19 @@
-const select = event => {
-  document
-    .querySelectorAll('.navlink')
-    .forEach(item => item.classList.remove('navlink-active'));
-  event.target.closest('.navlink').classList.add('navlink-active');
-};
-document.querySelector('.navbar').addEventListener('click', select);
+document.addEventListener('scroll', onScroll);
+function onScroll(event) {
+  const curPos = window.scrollY;
+  const sections = document.querySelectorAll('section');
+  const links = document.querySelectorAll('.navlink');
+  sections.forEach(el => {
+    if (el.offsetTop <= curPos && el.offsetTop + el.offsetHeight > curPos) {
+      links.forEach(a => {
+        a.classList.remove('navlink-active');
+        if (el.dataset.name === a.getAttribute('href').substring(1)) {
+          a.classList.add('navlink-active');
+        }
+      });
+    }
+  });
+}
 
 function Carousel(setting) {
   const elements = {
@@ -69,7 +78,7 @@ function onPhoneClick() {
 document
   .querySelector('.vertical_phone_button')
   .addEventListener('click', onPhoneClick);
-const blackscreen2 = function () {
+const blackscreen2 = function() {
   const elem = document.querySelector('.black-horizont');
   if (elem) {
     elem.parentNode.removeChild(elem);
@@ -86,7 +95,7 @@ document
 
 document
   .querySelector('.portfolio-filter')
-  .addEventListener('click', function (event) {
+  .addEventListener('click', function(event) {
     document
       .querySelectorAll('.portfolio-filter__item')
       .forEach(item => item.classList.remove('portfolio-filter__item--active'));
@@ -130,7 +139,7 @@ document
           }
         });
     }
-   });
+  });
 
 const active = event => {
   document
@@ -140,30 +149,33 @@ const active = event => {
 };
 document.querySelector('.portfolio-photo').addEventListener('click', active);
 
-const modal = document.getElementById("modal-window");
-const btn = document.querySelector(".contacts__submit");
-const close = document.querySelector(".close");
+const modal = document.getElementById('modal-window');
+const btn = document.querySelector('.contacts__submit');
+const close = document.querySelector('.close');
 const form = document.querySelector('.contacts__form');
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-  modal.style.display = "block";
-  const content = document.querySelector(".modal-body");
-  const subject = document.querySelector('input[name="subject"]').value || 'Без темы';
-  const describe = document.querySelector('textarea[name="textarea"]').value || 'Без описания';
+  modal.style.display = 'block';
+  const content = document.querySelector('.modal-body');
+  const subject =
+    document.querySelector('input[name="subject"]').value || 'Без темы';
+  const describe =
+    document.querySelector('textarea[name="textarea"]').value || 'Без описания';
   content.innerHTML = `
   <h4>Письмо отправлено</h4> 
   <p>Тема: ${subject}</p>
   <p>Описание: ${describe}</p>
-  `
-})
+  `;
+  form.reset();
+});
 
-close.onclick = function () {
-  modal.style.display = "none";
-}
+close.onclick = function() {
+  modal.style.display = 'none';
+};
 
-window.onclick = function (event) {
+window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.style.display = 'none';
   }
-}
+};
