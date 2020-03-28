@@ -4,7 +4,7 @@ function onScroll(event) {
   const sections = document.querySelectorAll('section');
   const links = document.querySelectorAll('.navlink');
   sections.forEach(el => {
-    if (el.offsetTop <= curPos && el.offsetTop + el.offsetHeight > curPos) {
+    if (curPos >= el.offsetTop && curPos < el.offsetTop + el.offsetHeight) {
       links.forEach(a => {
         a.classList.remove('navlink-active');
         if (el.dataset.name === a.getAttribute('href').substring(1)) {
@@ -14,7 +14,11 @@ function onScroll(event) {
     }
   });
 }
-
+document.querySelectorAll('.navlink').forEach(elem =>
+  elem.addEventListener('click', () => {
+    document.getElementById('nav').checked = false;
+  })
+);
 function Carousel(setting) {
   const elements = {
     main: document.querySelector(setting.main),
@@ -26,26 +30,52 @@ function Carousel(setting) {
 
   const MAX_POSITION = elements.children.length;
   let position = 0;
+  let isAnimationEnd = true;
+
+  elements.wrap.appendChild(elements.children[0].cloneNode(true));
+
   this.prev_slide = () => {
+    if (!isAnimationEnd) {
+      return;
+    }
+    isAnimationEnd = false;
     position -= 1;
 
     if (position < 0) {
       position = MAX_POSITION - 1;
+      elements.wrap.classList.add('notransition');
+      elements.wrap.style.transform = `translateX(-${MAX_POSITION}00%)`;
     }
-
-    elements.wrap.style.transform = `translateX(-${position}00%)`;
-    document.querySelector('.current').classList.remove('current');
+    setTimeout(() => {
+      elements.wrap.classList.remove('notransition');
+      elements.wrap.style.transform = `translateX(-${position}00%)`;
+    }, 10);
+    elements.wrap.addEventListener('transitionend', () => {
+      isAnimationEnd = true;
+    });
   };
 
   this.next_slide = () => {
-    position += 1;
+    if (!isAnimationEnd) {
+      return;
+    }
+    isAnimationEnd = false;
 
-    if (position >= MAX_POSITION) {
-      position = 0;
+    if (position < MAX_POSITION) {
+      position += 1;
     }
 
+    elements.wrap.classList.remove('notransition');
     elements.wrap.style.transform = `translateX(-${position}00%)`;
-    document.querySelector('.current').classList.remove('current');
+
+    elements.wrap.addEventListener('transitionend', () => {
+      if (position >= MAX_POSITION) {
+        position = 0;
+        elements.wrap.classList.add('notransition');
+        elements.wrap.style.transform = `translateX(-${position}00%)`;
+      }
+      isAnimationEnd = true;
+    });
   };
 
   if (elements.prev !== null) {
@@ -76,8 +106,14 @@ function onPhoneClick() {
 }
 
 document
-  .querySelector('.vertical_phone_button')
-  .addEventListener('click', onPhoneClick);
+  .querySelector('.slider')
+  .addEventListener('click', (e) => {
+    if (e.target.matches('.vertical_phone_button')) {
+      onPhoneClick()
+    }
+  });
+
+
 const blackscreen2 = function() {
   const elem = document.querySelector('.black-horizont');
   if (elem) {
@@ -89,9 +125,16 @@ const blackscreen2 = function() {
   }
 };
 
-document
-  .querySelector('.horizontal_phone_button')
-  .addEventListener('click', blackscreen2);
+  document
+  .querySelector('.slider')
+  .addEventListener('click', (e) => {
+    if (e.target.matches('.horizontal_phone_button')) {
+      blackscreen2()
+    }
+  });
+
+const items = Array.from(document.querySelectorAll('.portfolio-photo__item'));
+const parent = document.querySelector('.portfolio-photo');
 
 document
   .querySelector('.portfolio-filter')
@@ -103,41 +146,34 @@ document
       .closest('.portfolio-filter__item')
       .classList.add('portfolio-filter__item--active');
     if (event.target.dataset.tag === 'graphic') {
-      document
-        .querySelectorAll('.portfolio-photo__item')
-        .forEach((item, idx) => {
-          item.dataset.order = 0;
-          if (idx % 2 === 0) {
-            item.dataset.order = 2;
-          }
-        });
+      const arr = Array.from(items).reverse();
+      parent.innerHTML = '';
+      arr.forEach(item => parent.appendChild(item));
     }
+
     if (event.target.dataset.tag === 'art') {
-      document
-        .querySelectorAll('.portfolio-photo__item')
-        .forEach((item, idx) => {
-          item.dataset.order = 0;
-          if (idx % 2 != 0) {
-            item.dataset.order = 1;
-          }
-        });
+      parent.innerHTML = '';
+      items.forEach((elem, idx) => {
+        if (idx % 2 === 0) {
+          parent.prepend(elem);
+        } else {
+          parent.append(elem);
+        }
+      });
     }
     if (event.target.dataset.tag === 'all') {
-      document
-        .querySelectorAll('.portfolio-photo__item')
-        .forEach((item, idx) => {
-          item.dataset.order = 0;
-        });
+      parent.innerHTML = '';
+      items.forEach(item => parent.appendChild(item));
     }
     if (event.target.dataset.tag === 'web') {
-      document
-        .querySelectorAll('.portfolio-photo__item')
-        .forEach((item, idx) => {
-          item.dataset.order = 0;
-          if (idx % 3 != 0) {
-            item.dataset.order = 1;
-          }
-        });
+      parent.innerHTML = '';
+      items.forEach((elem, idx) => {
+        if (idx % 2 === 0) {
+          parent.append(elem);
+        } else {
+          parent.prepend(elem);
+        }
+      });
     }
   });
 
