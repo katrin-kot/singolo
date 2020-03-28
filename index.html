@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -30,6 +31,9 @@
         <a class="header__logo" href="#">
           <h1 class="title">singolo<span class="header__star">*</span></h1>
         </a>
+        <input type="checkbox" id="nav" class="hidden" />
+        <label for="nav" class="nav-open"></label>
+        <span class="title">singolo<span class="header__star">*</span></span>
         <nav class="navbar">
           <ul class="navbar__list">
             <li class="navbar__item">
@@ -49,6 +53,7 @@
             </li>
           </ul>
         </nav>
+        <div class="overlay"></div>
       </header>
       <section data-name="home" class="slider">
         <a class="section__anchor" name="home"></a>
@@ -364,7 +369,7 @@
             ></textarea>
 
             <div class="contacts__bottom">
-              <input class="contacts__submit" type="submit" value="Submit" />
+              <input class="contacts__submit" type="submit" value="Send" />
             </div>
           </form>
           <div id="modal-window" class="modal">
